@@ -28,12 +28,13 @@ else if($profileImg['size'] > 600000){
 
 if(count($errors) == 0){
     //moveing file
-    $fileName = "User-" . uniqid() . ".$extension";
+    $fileName = "user-" . uniqid() . ".$extension";
+    
     
     if(!is_dir("../uploads/users")){
         mkdir("../uploads/users");
     }
-    $uploadedfiles = move_uploaded_file($profileImg['tmp_name'],"../uploads/$fileName");
+    $uploadedfiles = move_uploaded_file($profileImg['tmp_name'],"../uploads/users/$fileName");
 
     if($uploadedfiles){
         $query = "UPDATE foods SET Fname='$fname',Lname='$lname',Email='$email',profile_img='$fileName' WHERE id = '$id'";
@@ -43,12 +44,13 @@ if(count($errors) == 0){
         $_SESSION['auth']['lname'] = $lname;
         $_SESSION['auth']['email'] = $email;
         $_SESSION['auth']['profile'] = $fileName;
+
         header("Location: ../Backend_file/profile.php");
     }
     
 }
 else{
-    $_SESSION['profile_error'] = $errors;
+    // $_SESSION['profile_error'] = $errors;
     header("Location: ../Backend_file/profile.php");
     
 }
