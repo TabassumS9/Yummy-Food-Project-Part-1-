@@ -9,9 +9,9 @@ include "./backend_inc/header.php"
             <form action="../controller/profileUpdate.php" method="post" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-lg-4">
-                        <label for="profile-img" style="width: 100%;" ><img class="profile_img" style="width: 200px; height: 220px; object-fit:cover;" 
-                        src=" <?= isset($_SESSION['auth']['profile']) ? "../uploads/users/" . $_SESSION['auth']['profile'] : "https://api.dicebear.com/7.x/initials/svg?seed=" .$_SESSION['auth']['Fname']?>" alt=""></label>
-                        <input name="profile_img" type="file" id="profile-img" class="profile_selector d-none" >
+                        <label for="profile_img" style="width: 100%;" ><img class="profile_img" style="width: 200px; height: 220px; object-fit:cover;" 
+                        src= "<?=isset($_SESSION['auth']['profile']) ? "../uploads/users/" . $_SESSION['auth']['profile'] : "https://api.dicebear.com/7.x/initials/svg?seed=" . $_SESSION['auth']['Fname'] ?>" alt=""></label>
+                        <input name="profile_img" type="file" id="profile_img" class="profile_selector d-none" >
                     </div>
                     <div class="col-lg-8">
                         <input name="fname" value="<?=$_SESSION['auth']['Fname']?>" class="form-control my-3" type="text" placeholder="First Name">
